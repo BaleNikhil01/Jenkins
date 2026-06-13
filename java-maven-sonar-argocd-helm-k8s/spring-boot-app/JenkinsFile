@@ -32,7 +32,10 @@ pipeline {
             apt-get install -y openjdk-17-jdk
 
             # 2. Tell the system to use Java 17 for the next command
+            # Line 1 tells the system where Java 17 lives, and Line 2 forces the system to actually use it for the rest of this step.
+            # Creates a global reference variable that tells other programs (like SonarQube or Maven) exactly where the Java 17 installation folder is located.
             export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+            # Adds the Java 17 bin folder (where the actual run commands live) to the very front of the system's command search list.
             export PATH=$JAVA_HOME/bin:$PATH
             
             # 3. Run the Sonar scanner (using the default sonar:sonar command)
