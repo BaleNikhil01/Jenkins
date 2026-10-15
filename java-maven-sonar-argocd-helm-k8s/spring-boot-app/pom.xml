@@ -72,3 +72,5 @@
 
 
 </project>
+<!-- pom.xml is similiar to requirements.txt in python has all the dependencies  -->
+<!-- so when you do mvn clean package it will download all this pacakges n dependencies and help java build the application  -->
