@@ -17,22 +17,7 @@ Built a CI/CD workflow for a Spring Boot application. Jenkins builds and analyze
 
 ## 2. End-to-End Workflow
 
-```mermaid
-flowchart TD
-    A[Developer pushes code to GitHub] --> B[Jenkins pipeline]
-    B --> C[Maven build and tests]
-    C --> D[SonarQube code analysis]
-    D --> E{Checks successful?}
-    E -- No --> F[Stop pipeline and report failure]
-    E -- Yes --> G[Build Docker image]
-    G --> H[Push versioned image to Docker Hub]
-    H --> I[Update image tag in Kubernetes manifest]
-    I --> J[Commit and push manifest to GitHub]
-    J --> K[Argo CD detects Git change]
-    K --> L[Argo CD syncs desired state]
-    L --> M[Kubernetes Deployment]
-    M --> N[ReplicaSet manages Pods]
-```
+<img width="1321" height="659" alt="228301952-abc02ca2-9942-4a67-8293-f76647b6f9d8" src="https://github.com/user-attachments/assets/68ea3e40-b68f-4934-be28-589cf9adc694" />
 
 **Important:** Jenkins builds and publishes the image. Argo CD deploys the Kubernetes configuration from GitHub. Argo CD does not build the Docker image.
 
@@ -145,19 +130,35 @@ Screenshots below show the successful Jenkins pipeline, Argo CD application heal
 
 ### Jenkins pipeline — successful build
 
-![Jenkins pipeline build 23 succeeded](images/proof-jenkins-pipeline.png)
+<img width="1469" height="751" alt="Screenshot From 2026-10-15 21-58-22" src="https://github.com/user-attachments/assets/324f5a4f-772b-4474-a0ce-8d9a7384cb5c" />
 
 ### Argo CD — application healthy and synced
 
-![Argo CD application Healthy and Synced](images/proof-argocd-healthy.png)
+<img width="1368" height="606" alt="Screenshot From 2026-10-15 22-14-11" src="https://github.com/user-attachments/assets/255eb122-19f2-4066-a629-7be9596103c8" />
 
 ### EC2 — Jenkins instance running
 
-![AWS EC2 Jenkins instance running](images/proof-ec2-instance.png)
+<img width="1268" height="556" alt="Screenshot From 2026-10-15 22-24-39" src="https://github.com/user-attachments/assets/99b2faeb-ee9b-4623-979f-e32ca086ff3a" />
 
-### CI/CD architecture flowchart
+### CI/CD architecture workflow
 
-![CI/CD workflow diagram](images/cicd-flowchart.png)
+```mermaid
+flowchart TD
+    A[Developer pushes code to GitHub] --> B[Jenkins pipeline]
+    B --> C[Maven build and tests]
+    C --> D[SonarQube code analysis]
+    D --> E{Checks successful?}
+    E -- No --> F[Stop pipeline and report failure]
+    E -- Yes --> G[Build Docker image]
+    G --> H[Push versioned image to Docker Hub]
+    H --> I[Update image tag in Kubernetes manifest]
+    I --> J[Commit and push manifest to GitHub]
+    J --> K[Argo CD detects Git change]
+    K --> L[Argo CD syncs desired state]
+    L --> M[Kubernetes Deployment]
+    M --> N[ReplicaSet manages Pods]
+```
+
 
 ## 7. Final Outcome
 
