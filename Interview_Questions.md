@@ -62,11 +62,6 @@ A: Using the UI,
    1. Click on the "Manage Jenkins" link in the left-side menu.
    2. Click on the "Manage Plugins" link.
 
-Q: What is JNLP and why is it used in Jenkins ?
-
-A: In Jenkins, JNLP is used to allow agents (also known as "slave nodes") to be launched and managed remotely by the Jenkins master instance. This allows Jenkins to distribute build tasks to multiple agents, providing scalability and improving performance.
-
-   When a Jenkins agent is launched using JNLP, it connects to the Jenkins master and receives build tasks, which it then executes. The results of the build are then sent back to the master and displayed in the Jenkins user interface.
 
 Q: What are some of the common plugins that you use in Jenkins ?
 
